@@ -1,10 +1,51 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pertemuan9/models/movie.dart';
 import 'package:pertemuan9/service/http_service.dart';
 
 class MovieList extends StatefulWidget {
   @override
   _MovieListState createState() => _MovieListState();
+}
+
+class MovieDetail extends StatelessWidget {
+  final Movie movie;
+  final String imgPath = 'https://image.tmdb.org/t/p/w500/';
+
+  MovieDetail(this.movie);
+
+  @override
+  Widget build(BuildContext context) {
+    String path;
+    if (movie.posterPath != null) {
+      path = imgPath + movie.posterPath;
+    } else {
+      path =
+          'https://images.freeimages.com/images/large-previews/Seb/movie-clapboard-1184339.jpg';
+    }
+    double height = MediaQuery.of(context).size.height;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(movie.title),
+      ),
+      body: SingleChildScrollView(
+          child: Center(
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.all(16),
+              height: height / 1.5,
+              child: Image.network(path),
+            ),
+            Container(
+              child: Text(movie.overview),
+              padding: EdgeInsets.only(left: 16, right: 16),
+            ),
+          ],
+        ),
+      )),
+    );
+  }
 }
 
 class _MovieListState extends State<MovieList> {
@@ -47,6 +88,11 @@ class _MovieListState extends State<MovieList> {
               subtitle: Text(
                 'Rating = ' + movies[position].voteAverage.toString(),
               ),
+              onTap: () {
+                MaterialPageRoute route = MaterialPageRoute(
+                    builder: (_) => MovieDetail(movies[position]));
+                Navigator.push(context, route);
+              },
             ),
           );
         },
