@@ -19,6 +19,7 @@ class MovieDetail extends StatelessWidget {
           'https://images.freeimages.com/images/large-previews/Seb/movie-clapboard-1184339.jpg';
     }
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(movie.title),
       ),
@@ -52,25 +53,44 @@ class MovieDetail extends StatelessWidget {
                         child: Text(
                           movie.title,
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 25),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25,
+                              color: Colors.white),
                         ),
                       ),
                       Row(
                         children: [
                           Container(
-                            padding: EdgeInsets.only(top: 20),
+                              padding: EdgeInsets.only(top: 20),
+                              child: Icon(
+                                Icons.star_rate,
+                                color: Colors.yellow[300],
+                              )),
+                          Container(
+                            padding: EdgeInsets.only(top: 20, left: 10),
                             child: Text(
-                              'Rating\n' + movie.voteAverage.toString(),
-                              style: TextStyle(fontSize: 15),
+                              movie.voteAverage.toString(),
+                              style:
+                                  TextStyle(fontSize: 15, color: Colors.white),
                             ),
                           ),
+                        ],
+                      ),
+                      Row(
+                        children: [
                           Container(
-                            padding: EdgeInsets.only(top: 20, left: 20),
+                            padding: EdgeInsets.only(top: 10),
+                            child: Icon(Icons.calendar_today_sharp,
+                                color: Colors.red[300]),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(top: 10, left: 10),
                             child: Text(
-                              'Release On\n' + movie.releaseDate,
-                              style: TextStyle(fontSize: 15),
+                              movie.releaseDate,
+                              style:
+                                  TextStyle(fontSize: 15, color: Colors.white),
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ],
@@ -84,12 +104,20 @@ class MovieDetail extends StatelessWidget {
                 Container(
                   child: Text(
                     'Overview',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
                   ),
                   padding: EdgeInsets.all(16),
                 ),
                 Container(
-                  child: Text(movie.overview, style: TextStyle(fontSize: 15)),
+                  child: Text(movie.overview,
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.white,
+                      ),
+                      textAlign: TextAlign.justify),
                   padding: EdgeInsets.only(left: 16, right: 16),
                 ),
               ],

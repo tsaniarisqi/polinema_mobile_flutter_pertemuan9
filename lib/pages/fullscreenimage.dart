@@ -19,6 +19,7 @@ class FullscreenImage extends StatelessWidget {
           'https://images.freeimages.com/images/large-previews/Seb/movie-clapboard-1184339.jpg';
     }
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(movie.title),
       ),
