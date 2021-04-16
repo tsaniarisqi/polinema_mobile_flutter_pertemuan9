@@ -20,9 +20,6 @@ class FullscreenImage extends StatelessWidget {
     }
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: Text(movie.title),
-      ),
       body: GestureDetector(
         child: Center(
           child: Padding(
